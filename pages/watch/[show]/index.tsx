@@ -6,7 +6,7 @@ export async function getStaticProps() {
   const shows = await prisma.series.findMany({
     select: {
       id: true,
-      name: true,
+      title: true,
       slug: true,
     },
   });
