@@ -11,22 +11,26 @@ datasource db {
 }
 
 model Series {
-  id        Int       @id @default(autoincrement())
-  title     String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  episodes  Episode[]
-  views     Int       @default(0)
-  slug      String    @unique
+  id          Int       @id @default(autoincrement())
+  title       String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  episodes    Episode[]
+  views       Int       @default(0)
+  slug        String    @unique
+  length      Int       @default(0)
+  description String
+  image       String    @default("https://i.pinimg.com/736x/7e/0e/3a/7e0e3ae2bf842b0386242b457b5c18d9.jpg")
 }
 
 model Episode {
-  id        Int      @id @default(autoincrement())
-  title     String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  seriesId  Int
-  series    Series   @relation(fields: [seriesId], references: [id])
-  views     Int      @default(0)
-  slug      String   @unique
+  id          Int      @id @default(autoincrement())
+  title       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  seriesId    Int
+  series      Series   @relation(fields: [seriesId], references: [id])
+  views       Int      @default(0)
+  slug        String   @unique
+  description String
 }
